@@ -1,0 +1,46 @@
+.box{
+	width: 80%;
+	height: auto;
+	margin:0 auto;
+	/*border:1px solid black;*/
+}
+.right, .left{
+	float: left;	
+	width: 48%;
+	/*padding:5%;*/
+	/*margin:5%;*/
+}
+.left{
+	padding-top: 30px;
+	padding-left: 2%;
+}
+.right{
+	padding-top: 30px;
+	padding-right: 2%;
+}
+.left textarea{
+	padding: 5px;
+	width: 95%;
+	height: 250px;
+	border:2px solid black;
+}
+.right .box-content{
+	border:2px solid black;
+	width: 95%;
+	height: 350px;
+
+}
+.button{
+	margin-top: 20px;
+}
+.button button{
+	background: white;
+	color: black;
+	border:1px solid black;
+}
+button:hover {
+	box-shadow: 2px 2px 8px black;
+}
+button:active {
+	box-shadow: 2px 2px 15px black;
+}
