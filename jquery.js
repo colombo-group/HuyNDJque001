@@ -47,9 +47,10 @@ $(document).ready(function(){
 			$('.check-box').append("<li><input type='checkbox' name='check'>"+$(x[i]).text()+"</li>");
 			$(x[i]).hide(500,function(){
 				$(this).remove();
+				evenli();
 			});
 			// return 0;
-			evenli();
+			
 			select();
 		}
 		
@@ -58,11 +59,13 @@ $(document).ready(function(){
 			if($('#ul li:last-child').text()!=""){
 		 	$('.check-box').append('<li><input type="checkbox" name="check">'+$('#ul li:last-child').text()+"</li>");
 			$('#ul li:last-child').hide(500,function(){
+
 				$(this).remove();
+				evenli();
 			});
 			}
 			else alert('Nothing to export');
-			evenli();
+			
 			select();
 		}
 		$('.check-box li').click(function(){
