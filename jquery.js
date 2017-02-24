@@ -2,39 +2,10 @@ $(document).ready(function(){
 	var content= new Array();
 	var count=0;
 	$("#import").click(function(){
-		var get_val=$('#input').val().split('\n');
-
-		if (get_val=="") {
-			alert('Nhap gia tri vao truong text area');
-			return 0;
-		}
-		else {
-			count++;
-		}
-		for (var i = 0; i < get_val.length; i++) {
-				$('#ul').append("<li>" + get_val[i] + "</li>");
-
-			}
-
-		select();
-		$('#input').val("");
-		evenli();
+		add(this.id);
 	});
 	$('#import-top').click(function(){
-		var get_val=$('#input').val().split('\n');
-		if(get_val==""){
-			alert('Nhap gia tri vao truong text area');
-			return 0;
-		}
-		else {
-			count++;
-		}
-		for(i=get_val.length-1;i>=0;i--){
-			$('#ul').prepend("<li>" + get_val[i] + "</li>");
-		}
-		select();
-		$('#input').val("");
-		evenli();
+		add(this.id);
 	});
 	$('#order').click(function(){
 		var od = $("#ul li");
@@ -44,6 +15,8 @@ $(document).ready(function(){
 			y = $(b).text().toLowerCase();
 		    if (x < y) {return -1;}
 		    if (x > y) {return 1;}
+		    evenli();
+		    select();
 		    return 0;
 		});
 		
@@ -55,12 +28,15 @@ $(document).ready(function(){
 		if($('#ul li').hasClass('select')){
 			$('.select').hide(1000,function(){
 				$(this).remove();
+				evenli();
 			});
 		}
 		else $('#ul li:last-child').hide(1000,function(){
 			$(this).remove();
+			evenli();
 		});
-		evenli();
+		// evenli();
+		select();
 
 	});
 	$('#export').click(function(){
@@ -73,6 +49,8 @@ $(document).ready(function(){
 				$(this).remove();
 			});
 			// return 0;
+			evenli();
+			select();
 		}
 		
 		}
@@ -84,6 +62,8 @@ $(document).ready(function(){
 			});
 			}
 			else alert('Nothing to export');
+			evenli();
+			select();
 		}
 		$('.check-box li').click(function(){
 			$(this).hide("1000", function(){
@@ -95,9 +75,36 @@ $(document).ready(function(){
 	
 	$(function() {
 		        $( "#ul" ).sortable();
+		        evenli();
 	    });
 	select();
 });
+function add(x) {
+		var arr = $('#input').val().split('\n');
+
+		if (x == 'import') {
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] == "") {
+					continue;
+				}
+				$('#ul').append("<li>" + arr[i] + "</li>");
+			}
+		}
+		if (x == "import-top") {
+			for (var i = arr.length - 1; i >= 0; i--) {
+				if (arr[i] == "") {
+					continue;
+				}
+				$('#ul').prepend("<li>" + arr[i] + "</li>");
+			}
+		}
+
+		$("#ul li").show('slow');
+		
+		$('#input').val("");
+		evenli();
+		select();
+	}
 function evenli(){
 	$('#ul li:odd').css('background-color','#fff');
 	$('#ul li:even').css('background-color','#ddd');
